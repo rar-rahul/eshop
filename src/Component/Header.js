@@ -105,12 +105,16 @@ export const Header = ({state}) => {
                   </Link>
 )}
 
+<<<<<<< HEAD
 <Link
                     to="/test"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     TestPage
                   </Link>
+=======
+                 
+>>>>>>> 9629ef2a59963ec5c78e9957477f0920efb533ac
                 </div>
               </div>
             </div>

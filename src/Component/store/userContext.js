@@ -17,11 +17,14 @@ export const AuthContextProvider = (props) => {
         setToken(null);
     }
 
+<<<<<<< HEAD
     const checkoutData = ({data}) => {
         let d = data;
         return d;
     }
 
+=======
+>>>>>>> 9629ef2a59963ec5c78e9957477f0920efb533ac
    
 
     const contextValue = {
@@ -31,8 +34,12 @@ export const AuthContextProvider = (props) => {
         logout:logoutHandler,
         cartData:[],
         cartTotal:0,
+<<<<<<< HEAD
         cartCount:[],
         checkoutFrmData:checkoutData
+=======
+        cartCount:[]
+>>>>>>> 9629ef2a59963ec5c78e9957477f0920efb533ac
     }
 
     return<AuthContext.Provider value={contextValue}>{props.children}</AuthContext.Provider>
