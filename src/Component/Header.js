@@ -1,23 +1,29 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import AuthContext from "./store/userContext";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export const Header = ({state}) => {
-
-  const {cart} = state;
+export const Header = ({ state }) => {
+  const { cart } = state;
   const authCtx = useContext(AuthContext);
   const basketCount = authCtx.cartData;
   const isLogedIn = authCtx.isLogedIn;
+  const navigate = useNavigate();
 
-  console.log(cart.length);
-
-    
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    authCtx.logout(null);
+    navigate("/");
+  };
 
   return (
     <>
-      <nav className="bg-gray-800">
+      <nav
+        className="bg-gray-800"
+        style={{ position: "fixed", zIndex: 100, width: "100%" }}
+      >
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -84,110 +90,75 @@ export const Header = ({state}) => {
                   >
                     Home
                   </Link>
-                {!isLogedIn&&(
-                   <Link
-                   to="/login"
-                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                 >
-                   Login
-                 </Link>
-    
 
-                )}
+                  {!isLogedIn && (
+                    <Link
+                      to="/signup"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      SignUp
+                    </Link>
+                  )}
 
-                
-{!isLogedIn&&(
-                <Link
-                    to="/signup"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    SignUp
-                  </Link>
-)}
-
-<<<<<<< HEAD
-<Link
+                  <Link
                     to="/test"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     TestPage
                   </Link>
-=======
-                 
->>>>>>> 9629ef2a59963ec5c78e9957477f0920efb533ac
                 </div>
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              {!isLogedIn && (
+                <Link
+                  to="/login"
+                  className="mr-2 text-green-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Login
+                </Link>
+              )}
+
+              {isLogedIn && (
+                <span
+                  onClick={handleLogout}
+                  className="btn btn-sm btn-success mr-3"
+                >
+                  Logout
+                </span>
+              )}
+
               <button
                 type="button"
-                className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                className="bg-green-800 p-1 rounded-full text-white-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
               >
-                <span className="sr-only">View notifications</span>
-                <Link to='/cart'><span>{cart.length}</span>
-                <AddShoppingCartIcon/>
+                <Link to="/cart">
+                  <span>{cart.length}</span>
+                  <AddShoppingCartIcon />
                 </Link>
-                
               </button>
 
               <div className="ml-3 relative">
                 <div>
-                 {isLogedIn &&(
-
-                      <button
+                  {isLogedIn && (
+                    <button
                       type="button"
                       className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                       id="user-menu-button"
                       aria-expanded="false"
                       aria-haspopup="true"
-                      >
+                    >
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
-                      </button>
-                 )
-
-                 }
-                 
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="sm:hidden" id="mobile-menu">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <a
-              href="#"
-              className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-              aria-current="page"
-            >
-              Dashboard
-            </a>
-
-            <a
-              href="#"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Team
-            </a>
-
-            <a
-              href="#"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Projects
-            </a>
-
-            <a
-              href="#"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Calendar
-            </a>
           </div>
         </div>
       </nav>

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useContext } from 'react';
-=======
-import React from 'react';
->>>>>>> 9629ef2a59963ec5c78e9957477f0920efb533ac
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
@@ -10,15 +6,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './Component/store/userContext';
-<<<<<<< HEAD
 import AuthContext from './Component/store/userContext';
-
-
-
-
-
-=======
->>>>>>> 9629ef2a59963ec5c78e9957477f0920efb533ac
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
