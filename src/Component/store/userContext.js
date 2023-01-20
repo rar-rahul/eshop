@@ -19,6 +19,8 @@ export const AuthContextProvider = (props) => {
 
    
 
+   
+
     const contextValue = {
         userToken:token,
         isLogedIn:userIsLogedIn,
@@ -26,7 +28,8 @@ export const AuthContextProvider = (props) => {
         logout:logoutHandler,
         cartData:[],
         cartTotal:0,
-        cartCount:[]
+        cartCount:[],
+       
     }
 
     return<AuthContext.Provider value={contextValue}>{props.children}</AuthContext.Provider>

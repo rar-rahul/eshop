@@ -104,7 +104,7 @@ const Cart = ({ state, dispatch }) => {
                                     </p>
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">
-                                  <div>
+                                  <div style={{display:'flex', alignItems:'center', gap:10}}>
                          <button onClick={() => changeQty(data.id, data.qty - 1)}>-</button>
                          <span>{data.qty}</span>
                          <button onClick={() => changeQty(data.id, data.qty + 1)}>+</button>
@@ -154,7 +154,7 @@ const Cart = ({ state, dispatch }) => {
                       <p>
                         or
                         <Link to="/">
-                          {" "}
+                        
                           <button
                             type="button"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
